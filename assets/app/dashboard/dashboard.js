@@ -6,7 +6,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
             controller: 'DashboardCtrl'
         });
     }])
-    .controller('DashboardCtrl', function($scope, $http, Process, Utils) {
+    .controller('DashboardCtrl', function($rootScope, $scope, $http, Process, Utils) {
         $scope.search = "";
         $scope.service = false;
         $scope.id = '';
@@ -15,6 +15,11 @@ myApp.config(['$routeProvider', function($routeProvider) {
             content: []
         };
         $scope.logs = sessionStorage.logs ? JSON.parse(sessionStorage.logs) : [];
+        $scope.onthispage = true;
+
+        $rootScope.$on("$routeChangeStart", function(next, current) {
+            $scope.onthispage = false;
+        });
 
         (function doit() {
             new Process().dashboard(function(data) {
@@ -107,14 +112,16 @@ myApp.config(['$routeProvider', function($routeProvider) {
 
                 $scope.processes.forEach(function(p) {
                     (function checkstatus(p) {
-                        setTimeout(function() {
-                            new Process({
-                                id: p.id
-                            }).status(function(res) {
-                                p.running = res.status;
-                                checkstatus(p);
-                            });
-                        }, 2000);
+                        if ($scope.onthispage) {
+                            setTimeout(function() {
+                                new Process({
+                                    id: p.id
+                                }).status(function(res) {
+                                    p.running = res.status;
+                                    checkstatus(p);
+                                });
+                            }, 2000);
+                        }
                     })(p);
                 });
             });
