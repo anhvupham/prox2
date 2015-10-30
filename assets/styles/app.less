@@ -1,0 +1,231 @@
+body {
+    .main {
+        margin-top: 69px;
+        .title {
+            font-size: 24px;
+            .grey {
+                color: #ccc;
+            }
+        }
+        .no-record {
+            line-height: 24px;
+        }
+        form {
+            .ng-invalid {
+                background-color: rgba(255, 178, 178, 0.43)
+            }
+        }
+        .list-group-item {
+            -webkit-animation: slidein 0.3s;
+            -moz-animation: slidein 0.3s;
+            -ms-animation: slidein 0.3s;
+            .btn {
+                .spin {
+                    -webkit-animation-name: rotate;
+                    -webkit-animation-duration: 3s;
+                    -webkit-animation-iteration-count: infinite;
+                    -webkit-animation-timing-function: linear;
+                    -moz-animation-name: rotate;
+                    -moz-animation-duration: 3s;
+                    -moz-animation-iteration-count: infinite;
+                    -moz-animation-timing-function: linear;
+                    -ms-animation-name: rotate;
+                    -ms-animation-duration: 3s;
+                    -ms-animation-iteration-count: infinite;
+                    -v-animation-timing-function: linear;
+                }
+            }
+            &.activity {
+                i.glyphicon-bullhorn {
+                    display: inline-block;
+                    /*margin-left: 10px;*/
+                    color: rgb(33, 150, 243);
+                    /*font-size: 23px;*/
+                    -webkit-animation-name: spinnerRotate;
+                    -webkit-animation-duration: 0.3s;
+                    -webkit-animation-iteration-count: infinite;
+                    -webkit-animation-timing-function: linear;
+                    -moz-animation-name: spinnerRotate;
+                    -moz-animation-duration: 0.3s;
+                    -moz-animation-iteration-count: infinite;
+                    -moz-animation-timing-function: linear;
+                    -ms-animation-name: spinnerRotate;
+                    -ms-animation-duration: 0.3s;
+                    -ms-animation-iteration-count: infinite;
+                    -ms-animation-timing-function: linear;
+                }
+            }
+        }
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes slidein {
+    from {
+        transform: translateX(50px);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@-webkit-keyframes spinnerRotate {
+    from {
+        color: rgb(33, 150, 243);
+    }
+    to {
+        color: #e51c23;
+    }
+}
+
+@-moz-keyframes spinnerRotate {
+    from {
+        color: rgb(33, 150, 243);
+    }
+    to {
+        color: #e51c23;
+    }
+}
+
+@-ms-keyframes spinnerRotate {
+    from {
+        color: rgb(33, 150, 243);
+    }
+    to {
+        color: #e51c23;
+    }
+}
+
+popup-confirm {
+    display: none;
+    .box {
+        border-radius: 6px;
+        background-color: #fff;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+        padding: 20px;
+        position: fixed;
+        top: 41%;
+        left: 38%;
+        z-index: 10;
+        .message {
+            margin-bottom: 30px;
+            font-size: 17px;
+        }
+        .btn {
+            margin-right: 15px;
+        }
+    }
+    &.display {
+        display: block;
+    }
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+    &.display {
+        display: block;
+    }
+}
+
+.notification {
+    position: fixed;
+    right: 20px;
+    bottom: 0;
+    height: 50px;
+    transform: translateY(200px);
+    -moz-transform: translateY(200px);
+    -ms-transform: translateY(200px);
+    -o-transform: translateY(200px);
+    -webkit-transform: translateY(200px);
+    transition: transform 0.3s;
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: transform 0.3s;
+    -ms-transition: transform 0.3s;
+    -o-transition: transform 0.3s;
+    z-index: 10;
+    &.open {
+        transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+        -webkit-transform: translateY(0);
+        transition: transform 0.3s;
+        -webkit-transition: -webkit-transform 0.3s;
+        -moz-transition: transform 0.3s;
+        -ms-transition: transform 0.3s;
+        -o-transition: transform 0.3s;
+    }
+}
+
+#custombuild {
+    .modal-content {
+        background: #fff;
+        div {
+            clear: both;
+        }
+        label {
+            width: 200px;
+            border-radius: 3px;
+            border: 1px solid #D1D3D4
+        }
+        input.radio:empty {
+            margin-left: -999px;
+        }
+        input.radio:empty ~ label {
+            position: relative;
+            float: left;
+            line-height: 2.5em;
+            text-indent: 3.25em;
+            /*margin-top: 2em;*/
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            text-transform: capitalize;
+        }
+        input.radio:empty ~ label:before {
+            position: absolute;
+            display: block;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            content: '';
+            width: 2.5em;
+            background: #D1D3D4;
+            border-radius: 3px 0 0 3px;
+        }
+        input.radio:hover:not(:checked) ~ label:before {
+            content: '\2714';
+            text-indent: .9em;
+            color: #C2C2C2;
+        }
+        input.radio:hover:not(:checked) ~ label {
+            color: #888;
+        }
+        input.radio:checked ~ label:before {
+            content: '\2714';
+            text-indent: .9em;
+            color: #9CE2AE;
+            background-color: #18BC9C;
+        }
+        input.radio:checked ~ label {
+            color: #777;
+        }
+    }
+}
