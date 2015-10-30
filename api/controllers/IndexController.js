@@ -1,11 +1,8 @@
-var _ = require('lodash'),
-    pid = [],
+var pid = [],
     fs = require('fs'),
     path = require('path'),
     ansi = require('ansi-html'),
     mkdirp = require('mkdirp');
-
-require('colors');
 
 function serviceIsRunning(id) {
     var i = 0;
