@@ -20,7 +20,7 @@ Clone the src
 `git clone https://github.com/anhvupham/prox2.git`
 
 ## Running Prox2
-`cd prox2 && node start`
+`cd prox2 && npm start`
 Then visit your app at [http://localhost:1337/](http://localhost:1337/).
 
 ## Sample of a Node service using shellscript with shortcode
