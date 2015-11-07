@@ -6,7 +6,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
             controller: 'DashboardCtrl'
         });
     }])
-    .controller('DashboardCtrl', function($rootScope, $scope, $http, Process, Utils) {
+    .controller('DashboardCtrl', ["$rootScope", "$scope", "$http", "Process", "Utils", function($rootScope, $scope, $http, Process, Utils) {
         $scope.search = "";
         $scope.service = false;
         $scope.id = '';
@@ -126,4 +126,4 @@ myApp.config(['$routeProvider', function($routeProvider) {
                 });
             });
         })();
-    });
+    }]);

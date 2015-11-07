@@ -6,7 +6,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
             controller: 'AdminCtrl'
         });
     }])
-    .controller('AdminCtrl', function($scope, Process, Utils) {
+    .controller('AdminCtrl', ["$scope", "Process", "Utils", function($scope, Process, Utils) {
         $scope.search = "";
         $scope.showPopup = null;
 
@@ -29,4 +29,4 @@ myApp.config(['$routeProvider', function($routeProvider) {
         $scope.onSuccess = function() {
             load();
         }
-    });
+    }]);

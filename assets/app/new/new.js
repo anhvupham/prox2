@@ -10,7 +10,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
                 controller: 'NewCtrl'
             });
     }])
-    .controller('NewCtrl', function($scope, $http, $routeParams, Utils, Process) {
+    .controller('NewCtrl', ["$scope", "$http", "$routeParams", "Utils", "Process", function($scope, $http, $routeParams, Utils, Process) {
         if ($routeParams.id) {
             new Process().getById($routeParams.id, function(data) {
                 $scope.model = data;
@@ -60,4 +60,4 @@ myApp.config(['$routeProvider', function($routeProvider) {
                 }
             });
         };
-    });
+    }]);
