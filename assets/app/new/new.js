@@ -10,7 +10,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
                 controller: 'NewCtrl'
             });
     }])
-    .controller('NewCtrl', ["$scope", "$http", "$routeParams", "Utils", "Process", function($scope, $http, $routeParams, Utils, Process) {
+    .controller('NewCtrl', ["$scope", "$http", "$routeParams", "Utils", "Process", "$location", function($scope, $http, $routeParams, Utils, Process, $location) {
         if ($routeParams.id) {
             new Process().getById($routeParams.id, function(data) {
                 $scope.model = data;
@@ -54,7 +54,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
             $scope.model.post(function(data) {
                 if (data.id) {
                     Utils.toggleNotification(true, 'Save successfully', false);
-                    location.hash = "/admin";
+                    $location.path("/admin");
                 } else {
                     Utils.toggleNotification(true, 'Save not successfully', true);
                 }

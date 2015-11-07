@@ -21,8 +21,9 @@
                             <span class="title"><i class="glyphicon glyphicon-cog"></i> {{process.name}}<span class="grey">:{{process.port}}</span></span>
                         </div>
                         <div class="col-sm-2 col-xs-12">
-                            <a class="btn btn-default" href="#/edit/{{process.id}}"><i class="glyphicon glyphicon-pencil"></i></a>
-                            <a class="btn btn-default" ng-click="delete($index, process.id, process.name)"><i class="glyphicon glyphicon-trash"></i></a>
+                            <a class="btn btn-success" href="#/edit/{{process.id}}" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>
+                            <a class="btn btn-danger" ng-click="delete($index, process.id, process.name)" title="Remove"><i class="glyphicon glyphicon-trash"></i></a>
+                            <a class="btn btn-default" ng-click="copy(process.id)" title="Copy"><i class="glyphicon glyphicon-paste"></i></a>
                         </div>
                     </div>
                     <div class="no-record" ng-if="processes.length == 0">No process found. Click <a href="#/new">new</a> process to create one.</div>
