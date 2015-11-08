@@ -1,4 +1,4 @@
-myApp.directive('popupConfirm', function(Utils, Process) {
+myApp.directive('popupConfirm', ["Utils", "Process", function(Utils, Process) {
     return {
         restrict: 'E',
         templateUrl: 'app/components/popup/popup.html',
@@ -23,16 +23,16 @@ myApp.directive('popupConfirm', function(Utils, Process) {
                 scope.api.close();
             }
             scope.delete = function() {
-            	new Process().deleteById(scope.process.id, function(data){
-            		if (data.status) {
-            			Utils.toggleNotification(true, 'Delete successfully', false);
-            			scope.api.close();
-            			scope.success();
-            		} else {
-            			Utils.toggleNotification(true, 'Delete not successfully', true);
-            		}
-            	});
+                new Process().deleteById(scope.process.id, function(data) {
+                    if (data.status) {
+                        Utils.toggleNotification(true, 'Delete successfully', false);
+                        scope.api.close();
+                        scope.success();
+                    } else {
+                        Utils.toggleNotification(true, 'Delete not successfully', true);
+                    }
+                });
             }
         }
     };
-});
+}]);

@@ -6,11 +6,11 @@ myApp.config(['$routeProvider', function($routeProvider) {
             controller: 'EditCtrl'
         });
     }])
-    .controller('EditCtrl', function($scope, $http, $routeParams, Utils, Process) {
+    .controller('EditCtrl', ["$scope", "$http", "$routeParams", "Utils", "Process", "$location", function($scope, $http, $routeParams, Utils, Process, $location) {
         function transformArgs(value) {
             return value.split(',');
         };
-        
+
         new Process().getById($routeParams.id, function(data) {
             $scope.model = data;
 
@@ -45,6 +45,6 @@ myApp.config(['$routeProvider', function($routeProvider) {
             });
         };
         $scope.copy = function() {
-            location.hash = "/new/" + $scope.model.id;
+            $location.path("/new/" + $scope.model.id);
         };
-    });
+    }]);
