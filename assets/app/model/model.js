@@ -4,8 +4,8 @@ myApp.factory('Process', ['$http', 'Utils', function($http, Utils) {
     function Process(data) {
         this.id = data ? data.id : '';
         this.name = data ? data.name : '';
-        this.command = data ? data.command : '';
-        this.args = data ? data.args : [];
+        this.command = data ? data.command : 'sh';
+        this.args = data ? data.args : 'build.sh, [?notbuild:build], [?notrun:run]';
         this.cwd = data ? data.cwd : '';
         this.img = data ? data.img : '';
         this.stopcmd = data ? data.stopcmd : '';
@@ -14,7 +14,7 @@ myApp.factory('Process', ['$http', 'Utils', function($http, Utils) {
         this.port = data ? data.port : '';
         this.hidden = data ? data.hidden : false;
         this.logs = data ? data.logs : [];
-        this.file = data ? data.file : '';
+        this.file = data ? data.file : 'if [ $1 = "build" ]; then \n#Enter some commands here for building service \nfi\n\nif [ $2 = "run" ]; then \n#Enter some commands here for running service \nfi';
     };
 
     Process.prototype.status = function(callback) {

@@ -40,10 +40,6 @@ myApp.config(['$routeProvider', function($routeProvider) {
             }
         });
 
-        $scope.createfile = function() {
-            $scope.model.file = 'if [ $1 = "build" ]; then \n#Enter some commands here for building service \nfi\n\nif [ $2 = "run" ]; then \n#Enter some commands here for running service \nfi';
-        };
-
         $scope.save = function(valid) {
             if (!valid) {
                 Utils.toggleNotification(true, 'Please enter required fields', true);

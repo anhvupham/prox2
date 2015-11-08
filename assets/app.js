@@ -17,7 +17,7 @@ var myApp = angular.module('myApp', [
     .controller('indexCtrl', ['$rootScope', '$scope', '$location', function($rootScope, $scope, $location) {
         $scope.searchAvailable = false;
         $rootScope.$on("$routeChangeSuccess", function(current, previous) {
-            if($location.$$path === "/dashboard" || $location.$$path === "/admin") {
+            if ($location.$$path === "/dashboard" || $location.$$path === "/admin") {
                 $scope.searchAvailable = true;
             } else {
                 $scope.searchAvailable = false;
@@ -28,3 +28,7 @@ var myApp = angular.module('myApp', [
             if (controller) controller.search = value;
         });
     }]);
+
+$(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip();
+});
