@@ -14,6 +14,7 @@
 ## Prerequisites
 * [Node.js](http://nodejs.org/) (with NPM)
 * [MONGO DB >3.0](http://www.mongodb.org/)
+* [Redis](http://www.redis.io/)
 
 ## Installation 
 Clone the src
