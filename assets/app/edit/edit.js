@@ -34,8 +34,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
                 Utils.toggleNotification(true, 'Please enter required fields', true);
                 return;
             };
-            // var args = $scope.model.args;
-            // $scope.model.args = args.match(/\,/gi) ? transformArgs(args) : args
+            var args = $scope.model.args;
+            $scope.model.args = args.match(/\,/gi) ? transformArgs(args) : args
             $scope.model.putById($scope.model.id, function(data) {
                 if (data.id) {
                     Utils.toggleNotification(true, 'Save successfully', false);
