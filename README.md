@@ -24,6 +24,15 @@ Clone the src
 `cd prox2 && npm start`
 Then visit your app at [http://localhost:1337/](http://localhost:1337/).
 
+#### Admin list page
+![Client Application](/screenshot/proxapp.png?raw=true "Admin list page")
+#### Dashboard
+![Client Application](/screenshot/proxapp1.png?raw=true "Dashboard")
+#### Add a service
+![Client Application](/screenshot/proxapp2.png?raw=true "Add a service")
+#### Edit a service
+![Client Application](/screenshot/proxapp3.png?raw=true "Edit a service")
+
 ## Sample of a Node service using shellscript with shortcode
 * Name : Node service
 * CMD : sh
