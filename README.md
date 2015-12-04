@@ -1,6 +1,6 @@
 
 # PROX 2
-##### Is another version of Prox but built in AngularJS and Sailsjs for one who prefer AngularJS.
+##### Is another version of Prox but built in AngularJS and Sailsjs for one who prefer AngularJS. A small application to translate UI commands to bash script command executions. All you need is write the bash script and Prox will give you the UI to manage.
 
 ## Features
 * Edit the shell script right on app.
