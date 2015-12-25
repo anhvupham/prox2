@@ -1,6 +1,6 @@
 
 # PROX 2
-##### Is another version of Prox but built in AngularJS and Sailsjs for one who prefer AngularJS.
+##### Is another version of Prox but built in AngularJS and Sailsjs for one who prefer AngularJS. A small application to translate UI commands to bash script command executions. All you need is write the bash script and Prox will give you the UI to manage.
 
 ## Features
 * Edit the shell script right on app.
@@ -14,6 +14,7 @@
 ## Prerequisites
 * [Node.js](http://nodejs.org/) (with NPM)
 * [MONGO DB >3.0](http://www.mongodb.org/)
+* [Redis](http://www.redis.io/)
 
 ## Installation 
 Clone the src
@@ -22,6 +23,15 @@ Clone the src
 ## Running Prox2
 `cd prox2 && npm start`
 Then visit your app at [http://localhost:1337/](http://localhost:1337/).
+
+#### Admin list page
+![Client Application](/screenshot/proxapp.png?raw=true "Admin list page")
+#### Dashboard
+![Client Application](/screenshot/proxapp1.png?raw=true "Dashboard")
+#### Add a service
+![Client Application](/screenshot/proxapp2.png?raw=true "Add a service")
+#### Edit a service
+![Client Application](/screenshot/proxapp3.png?raw=true "Edit a service")
 
 ## Sample of a Node service using shellscript with shortcode
 * Name : Node service
