@@ -10,11 +10,13 @@ myApp.config(['$routeProvider', function($routeProvider) {
         $scope.search = "";
         $scope.showPopup = null;
 
-        (function load() {
+        function load() {
             new Process().get($scope.search, function(data) {
                 $scope.processes = data;
             });
-        }());
+        };
+
+        load();
 
         $scope.delete = function(index, id, name) {
             $scope.process = {
