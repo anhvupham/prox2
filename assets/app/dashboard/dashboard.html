@@ -23,8 +23,8 @@
                             <span class="title"><i class="glyphicon glyphicon-cog"></i> {{process.name}}<span class="grey">:{{process.port}}</span></span>
                         </div>
                         <div class="col-sm-4 col-xs-12">
-                            <a class="btn btn-success" ng-if="process.running" ng-click="stopservice(process)"><i class="glyphicon glyphicon-stop" ng-class="{spin: process.stopping}"></i></a>
-                            <a class="btn btn-danger" ng-if="!process.running" ng-click="startservice(process)"><i class="glyphicon glyphicon-play" ng-class="{spin: process.starting}"></i></a>
+                            <a class="btn btn-success" ng-class="{notshow: !process.running}" ng-click="stopservice(process)"><i class="glyphicon glyphicon-stop" ng-class="{spin: process.stopping}"></i></a>
+                            <a class="btn btn-danger" ng-class="{notshow: process.running}" ng-click="startservice(process)"><i class="glyphicon glyphicon-play" ng-class="{spin: process.starting}"></i></a>
                             <a class="btn btn-primary" ng-click="showLog(process)"><i class="glyphicon glyphicon-bullhorn"></i></a>
                         </div>
                     </div>

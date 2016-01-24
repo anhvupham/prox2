@@ -17,8 +17,11 @@ myApp.config(['$routeProvider', function($routeProvider) {
         $scope.logs = sessionStorage.logs ? JSON.parse(sessionStorage.logs) : [];
         $scope.onthispage = true;
 
+        var wk; //worker instance
+
         $rootScope.$on("$routeChangeStart", function(next, current) {
             $scope.onthispage = false;
+            wk.terminate(); //close worker
         });
 
         (function doit() {
@@ -110,20 +113,32 @@ myApp.config(['$routeProvider', function($routeProvider) {
                     });
                 }
 
-                $scope.processes.forEach(function(p) {
-                    (function checkstatus(p) {
-                        if ($scope.onthispage) {
-                            setTimeout(function() {
-                                new Process({
-                                    id: p.id
-                                }).status(function(res) {
-                                    p.running = res.status;
-                                    checkstatus(p);
-                                });
-                            }, 2000);
-                        }
-                    })(p);
-                });
+                if (window.Worker) {
+                    wk = new Worker("worker/dashboard.js");
+                    wk.onmessage = function(e) {
+                        var row = $("#" + e.data.id);
+                        var btnstop = row.find(".btn-success");
+                        var btnstart = row.find(".btn-danger");
+                        btnstop.css("display", e.data.status ? "inline-block" : "none");
+                        btnstart.css("display", e.data.status ? "none" : "inline-block");
+                    };
+                    wk.postMessage($scope.processes);
+                } else {
+                    $scope.processes.forEach(function(p) {
+                        (function checkstatus(p) {
+                            if ($scope.onthispage) {
+                                setTimeout(function() {
+                                    new Process({
+                                        id: p.id
+                                    }).status(function(res) {
+                                        p.running = res.status;
+                                        checkstatus(p);
+                                    });
+                                }, 2000);
+                            }
+                        })(p);
+                    });
+                }
             });
         })();
     }]);
