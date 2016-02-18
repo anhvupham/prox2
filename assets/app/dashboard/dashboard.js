@@ -25,8 +25,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
         });
 
         (function doit() {
-            new Process().dashboard(function(data) {
-                $scope.processes = data.processes;
+            new Process().dashboard().then(function(res) {
+                $scope.processes = res.data.processes;
 
                 $scope.showLog = function(process) {
                     $scope.log.title = process.name;
@@ -87,7 +87,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
                         id: pid
                     }).exec({
                         service: process ? false : newservice
-                    }, function(data) {
+                    }).then(function(res) {
+                        var data = res.data;
                         if (data.service && data.needbuild) {
                             for (var i = 0; i < data.service.args.length; i++) {
                                 if (data.service.args[i].match(/\?/g)) {
@@ -108,7 +109,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
                     process.starting = false;
                     new Process({
                         id: process.id
-                    }).stop(function(data) {
+                    }).stop().then(function(data) {
                         console.log("Service " + process.name + " stopped");
                     });
                 }
@@ -130,8 +131,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
                                 setTimeout(function() {
                                     new Process({
                                         id: p.id
-                                    }).status(function(res) {
-                                        p.running = res.status;
+                                    }).status().then(function(res) {
+                                        p.running = res.data.status;
                                         checkstatus(p);
                                     });
                                 }, 2000);

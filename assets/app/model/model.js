@@ -17,28 +17,20 @@ myApp.factory('Process', ['$http', 'Utils', function($http, Utils) {
         this.file = data ? data.file : 'if [ $1 = "build" ]; then \n#Enter some commands here for building service \nfi\n\nif [ $2 = "run" ]; then \n#Enter some commands here for running service \nfi';
     };
 
-    Process.prototype.status = function(callback) {
-        $http.get('/status/' + this.id).success(function(data) {
-            callback(data);
-        });
+    Process.prototype.status = function() {
+        return $http.get('/status/' + this.id);
     };
 
-    Process.prototype.stop = function(callback) {
-        $http.delete('/execute/' + this.id).success(function(data) {
-            callback(data);
-        });
+    Process.prototype.stop = function() {
+        return $http.delete('/execute/' + this.id);
     };
 
-    Process.prototype.exec = function(body, callback) {
-        $http.post('/execute/' + this.id, body).success(function(data) {
-            callback(data);
-        });
+    Process.prototype.exec = function(body) {
+        return $http.post('/execute/' + this.id, body);
     };
 
-    Process.prototype.dashboard = function(callback) {
-        $http.get('/dashboard', this).success(function(data) {
-            callback(data);
-        });
+    Process.prototype.dashboard = function() {
+        return $http.get('/dashboard', this);
     };
 
     Process.prototype.post = function(callback) {
